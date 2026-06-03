@@ -1,0 +1,61 @@
+.about {
+  padding: 120px 80px;
+  background: #f5f7fa;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+
+  h2 {
+    font-size: 54px;
+    margin-bottom: 20px;
+    color: #081120;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: 0.4s;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .about {
+    grid-template-columns: 1fr;
+    padding: 80px 20px;
+
+    h2 {
+      font-size: 38px;
+    }
+
+    p {
+      font-size: 17px;
+    }
+
+    .right {
+
+      .card {
+        padding: 30px;
+      }
+    }
+  }
+
+}

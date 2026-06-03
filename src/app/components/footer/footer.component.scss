@@ -1,0 +1,32 @@
+.footer {
+  background: #081120;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 38px;
+  }
+
+  p {
+    color: #ccc;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .footer {
+
+    padding: 50px 20px;
+
+    h2 {
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+}
