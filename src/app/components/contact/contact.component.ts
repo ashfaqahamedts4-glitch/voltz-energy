@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import emailjs from '@emailjs/browser';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
@@ -20,16 +21,21 @@ export class ContactComponent {
   };
 
   loading = false;
-  successMessage = '';
+
+  showPopup = false;
+
+  popupMessage = '';
+
+  popupType = '';
 
   sendEmail() {
 
     this.loading = true;
 
-    // SEND MAIL TO YOUR COMPANY EMAIL
+    // SEND MAIL TO COMPANY
     emailjs.send(
       'service_nd49ijj',
-      'template_company',
+      'template_pxrsjh4',
       {
         from_name: this.formData.name,
         from_email: this.formData.email,
@@ -42,10 +48,10 @@ export class ContactComponent {
 
     .then(() => {
 
-      // AUTO REPLY MAIL TO CLIENT
+      // AUTO REPLY TO CLIENT
       emailjs.send(
         'service_nd49ijj',
-        'template_autoreply',
+        'template_9i41xj5',
         {
           to_name: this.formData.name,
           to_email: this.formData.email
@@ -55,8 +61,12 @@ export class ContactComponent {
 
       this.loading = false;
 
-      this.successMessage =
-        'Thank you! Our team will contact you shortly.';
+      this.popupType = 'success';
+
+      this.popupMessage =
+        'Message Sent Successfully!';
+
+      this.showPopup = true;
 
       // RESET FORM
       this.formData = {
@@ -67,16 +77,36 @@ export class ContactComponent {
         message: ''
       };
 
+      // AUTO CLOSE POPUP
+      setTimeout(() => {
+
+        this.showPopup = false;
+
+      }, 3000);
+
     })
 
     .catch((error) => {
 
-      this.loading = false;
-
       console.error('EMAIL ERROR:', error);
 
-      alert('Something went wrong!');
+      this.loading = false;
+
+      this.popupType = 'error';
+
+      this.popupMessage =
+        'Failed To Send Message!';
+
+      this.showPopup = true;
+
+      setTimeout(() => {
+
+        this.showPopup = false;
+
+      }, 3000);
+
     });
+
   }
 
 }

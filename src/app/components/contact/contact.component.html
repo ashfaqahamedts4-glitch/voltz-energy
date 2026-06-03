@@ -1,69 +1,151 @@
-<section class="contact">
+<section class="contact" id="contact">
 
   <div class="contact-container">
 
+    <!-- LEFT SIDE -->
+
     <div class="left">
 
-      <h1>Let's Build Something Great Together</h1>
+      <span class="tag">
+        CONTACT US
+      </span>
+
+      <h1>
+        Let's Build Something Great Together
+      </h1>
 
       <p>
         Contact our team for renewable energy,
-        sustainability and environmental solutions.
+        sustainability and environmental
+        solutions tailored for your business.
       </p>
 
+      <div class="info-box">
+
+        <div class="info-item">
+
+          <div class="icon">📧</div>
+
+          <div>
+
+            <h4>Email</h4>
+
+            <span>
+              contact&#64;voltzenergy.com
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="info-item">
+
+          <div class="icon">📞</div>
+
+          <div>
+
+            <h4>Phone</h4>
+
+            <span>
+              +91 98765 43210
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="info-item">
+
+          <div class="icon">📍</div>
+
+          <div>
+
+            <h4>Location</h4>
+
+            <span>
+              Chennai, India
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
+
+    <!-- RIGHT SIDE -->
 
     <div class="right">
 
       <form (ngSubmit)="sendEmail()">
 
-        <input
-          type="text"
-          placeholder="Full Name"
-          [(ngModel)]="formData.name"
-          name="name"
-          required
+        <div class="input-group">
+
+          <input
+            type="text"
+            placeholder="Full Name"
+            [(ngModel)]="formData.name"
+            name="name"
+            required
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            [(ngModel)]="formData.email"
+            name="email"
+            required
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <input
+            type="text"
+            placeholder="Company Name"
+            [(ngModel)]="formData.company"
+            name="company"
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <input
+            type="text"
+            placeholder="Phone Number"
+            [(ngModel)]="formData.phone"
+            name="phone"
+          >
+
+        </div>
+
+        <div class="input-group">
+
+          <textarea
+            rows="6"
+            placeholder="Tell us about your project..."
+            [(ngModel)]="formData.message"
+            name="message"
+            required
+          ></textarea>
+
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="loading"
         >
-
-        <input
-          type="email"
-          placeholder="Email Address"
-          [(ngModel)]="formData.email"
-          name="email"
-          required
-        >
-
-        <input
-          type="text"
-          placeholder="Company Name"
-          [(ngModel)]="formData.company"
-          name="company"
-        >
-
-        <input
-          type="text"
-          placeholder="Phone Number"
-          [(ngModel)]="formData.phone"
-          name="phone"
-        >
-
-        <textarea
-          rows="6"
-          placeholder="Your Message"
-          [(ngModel)]="formData.message"
-          name="message"
-          required
-        ></textarea>
-
-        <button type="submit">
 
           {{ loading ? 'Sending...' : 'Send Message' }}
 
         </button>
-
-        <p class="success">
-          {{ successMessage }}
-        </p>
 
       </form>
 
@@ -72,3 +154,25 @@
   </div>
 
 </section>
+
+<!-- POPUP -->
+
+<div
+  class="popup"
+  [ngClass]="popupType"
+  *ngIf="showPopup"
+>
+
+  <div class="popup-icon">
+
+    {{ popupType === 'success' ? '✓' : '✕' }}
+
+  </div>
+
+  <div class="popup-text">
+
+    {{ popupMessage }}
+
+  </div>
+
+</div>
