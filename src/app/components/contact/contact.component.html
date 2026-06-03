@@ -1,0 +1,74 @@
+<section class="contact">
+
+  <div class="contact-container">
+
+    <div class="left">
+
+      <h1>Let's Build Something Great Together</h1>
+
+      <p>
+        Contact our team for renewable energy,
+        sustainability and environmental solutions.
+      </p>
+
+    </div>
+
+    <div class="right">
+
+      <form (ngSubmit)="sendEmail()">
+
+        <input
+          type="text"
+          placeholder="Full Name"
+          [(ngModel)]="formData.name"
+          name="name"
+          required
+        >
+
+        <input
+          type="email"
+          placeholder="Email Address"
+          [(ngModel)]="formData.email"
+          name="email"
+          required
+        >
+
+        <input
+          type="text"
+          placeholder="Company Name"
+          [(ngModel)]="formData.company"
+          name="company"
+        >
+
+        <input
+          type="text"
+          placeholder="Phone Number"
+          [(ngModel)]="formData.phone"
+          name="phone"
+        >
+
+        <textarea
+          rows="6"
+          placeholder="Your Message"
+          [(ngModel)]="formData.message"
+          name="message"
+          required
+        ></textarea>
+
+        <button type="submit">
+
+          {{ loading ? 'Sending...' : 'Send Message' }}
+
+        </button>
+
+        <p class="success">
+          {{ successMessage }}
+        </p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
